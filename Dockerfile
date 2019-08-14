@@ -12,13 +12,14 @@ RUN apt-get update
 RUN apt-get install -y wget dialog gnupg nano
 RUN wget -q http://www.benno-mailarchiv.de/download/debian/benno.asc \
 	&& apt-key add benno.asc \
-	&& deb http://www.benno-mailarchiv.de/download/debian /
+	&& deb http://www.benno-mailarchiv.de/download/debian / \
 	&& apt-get update \
 	&& echo $TZ | tee /etc/timezone \
 	&& dpkg-reconfigure --frontend noninteractive tzdata \
 	&& apt-get install -y \
 		libdbd-mysql-perl \
 		libcrypt-eksblowfish-perl \
+		libdata-entropy-perl \
 		benno-lib \
 		benno-core \
       		benno-archive \
