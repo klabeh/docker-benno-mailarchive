@@ -1,6 +1,6 @@
-FROM debian:stable
+FROM debian:stretch
 
-LABEL maintainer="Meik Minks <mminks@inoxio.de>"
+LABEL maintainer="Marko Hoffmann <m.hoffmann@lets-sell.info>"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV APACHE_RUN_USER www-data
@@ -8,42 +8,30 @@ ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 ENV TZ=Europe/Berlin
 
-RUN apt-get update \
-		&& apt-get install -y \
-		  wget \
-		  dialog \
-		  php-mbstring \
-		  gnupg \
-		  nano \
-		&& wget -q http://www.benno-mailarchiv.de/download/debian/benno.asc \
-		&& apt-key add benno.asc \
-		&& echo "deb http://www.benno-mailarchiv.de/download/debian /" >> /etc/apt/sources.list.d/benno-mailarchive.list \
-		&& rm -Rf benno.asc \
-		&& apt-get update \
-		&& apt-get -y install \
-		  apache2 \
-		  php \
-		  php-pear \
-		  smarty3 \
-		&& apt-get autoremove --purge \
-		&& apt-get clean \
-		&& apt-get autoclean \
-    && echo $TZ | tee /etc/timezone \
-    && dpkg-reconfigure --frontend noninteractive tzdata \
-    && apt-get install -y \
-      benno-lib \
-      benno-core \
-      benno-archive \
-      benno-rest-lib \
-      benno-rest \
-      benno-smtp \
-      benno-imap \
-      benno-pop3 \
-      php-sqlite3 \
-      php-curl \
-      smarty3 \
-      php-pear \
-      sqlite3 \
+RUN apt-get update
+RUN apt-get install -y wget dialog gnupg nano
+RUN wget -q http://www.benno-mailarchiv.de/download/debian/benno.asc \
+	&& apt-key add benno.asc \
+	&& deb http://www.benno-mailarchiv.de/download/debian /
+	&& apt-get update \
+	&& echo $TZ | tee /etc/timezone \
+	&& dpkg-reconfigure --frontend noninteractive tzdata \
+	&& apt-get install -y \
+		libdbd-mysql-perl \
+		libcrypt-eksblowfish-perl \
+		benno-lib \
+		benno-core \
+      		benno-archive \
+      		benno-rest-lib \
+      		benno-rest \
+      		benno-smtp \
+      		benno-imap \
+      		benno-pop3 \
+      		php-sqlite3 \
+      		php-curl \
+      		smarty3 \
+      		php-pear \
+      		sqlite3 \
       libdbi-perl \
       libdbd-sqlite3-perl \
       sqlite3 \
