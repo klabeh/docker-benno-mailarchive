@@ -38,6 +38,7 @@ RUN apt-get update \
       benno-rest \
       benno-smtp \
       benno-imap \
+      benno-pop3 \
       php-sqlite3 \
       php-curl \
       smarty3 \
