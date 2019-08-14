@@ -17,7 +17,7 @@ RUN apt-get update \
 		  gnupg \
 		&& wget -q http://www.benno-mailarchiv.de/download/debian/benno.asc \
 		&& apt-key add benno.asc \
-		&& echo "deb http://www.benno-mailarchiv.de/download/debian /" >> /etc/apt/sources.list.d/benno-mailarchive.list \
+		&& echo "deb http://www.benno-mailarchiv.de/download/debian/2.4 /" >> /etc/apt/sources.list.d/benno-mailarchive.list \
 		&& rm -Rf benno.asc \
 		&& apt-get update \
 		&& apt-get -y install \
