@@ -24,7 +24,6 @@ RUN apt-get update \
 		  apache2 \
 		  php \
 		  php-pear \
-		  php-db \
 		  smarty3 \
 		&& apt-get autoremove --purge \
 		&& apt-get clean \
