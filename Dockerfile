@@ -43,7 +43,6 @@ RUN apt-get update \
       php-sqlite3 \
       php-curl \
       smarty3 \
-      php-db \
       php-pear \
       sqlite3 \
       libdbi-perl \
