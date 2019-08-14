@@ -14,6 +14,7 @@ RUN apt-get update \
 		  dialog \
 		  php-mbstring \
 		  gnupg \
+		  nano \
 		&& wget -q http://www.benno-mailarchiv.de/download/debian/benno.asc \
 		&& apt-key add benno.asc \
 		&& echo "deb http://www.benno-mailarchiv.de/download/debian /" >> /etc/apt/sources.list.d/benno-mailarchive.list \
